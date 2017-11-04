@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc 
+    					http://www.springframework.org/schema/mvc/spring-mvc.xsd
+  					    http://www.springframework.org/schema/beans 
+  					    http://www.springframework.org/schema/beans/spring-beans.xsd
+       					http://www.springframework.org/schema/context 
+       					http://www.springframework.org/schema/context/spring-context.xsd
+       					http://www.springframework.org/schema/aop         
+     					http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
+
+
+	<beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<beans:property name="driverClassName" value="com.mysql.jdbc.Driver"></beans:property>
+		 
+		<!-- Suyoga Production -->
+<!--   <beans:property name="url"
+			value="jdbc:mysql://suyoga.cczx36tkwc26.ap-south-1.rds.amazonaws.com:3306/suyoga"></beans:property>
+			<beans:property name="username" value="suyoga"></beans:property>
+		<beans:property name="password" value="suyoga123"></beans:property> 
+		
+	</beans:bean >   -->
+			<!-- Suyoga Production -->
+<!--      <beans:property name="url"
+			value="jdbc:mysql://suyoga.ctnixwnnt4tn.ap-south-1.rds.amazonaws.com:3306/suyoga"></beans:property>
+			<beans:property name="username" value="suyoga"></beans:property>
+		<beans:property name="password" value="Suyoga0987123"></beans:property> 
+		
+	</beans:bean >  --> 
+	
+	<!-- Suyoga Dev -->
+   <beans:property name="url"  value="jdbc:mysql://suyogaorg.cf1vh8xxiy3c.ap-south-1.rds.amazonaws.com:3306/suyogadev"></beans:property>
+			<beans:property name="username" value="suyogaorg"></beans:property>
+		<beans:property name="password" value="SuyogaOrg098"></beans:property>
+		
+	</beans:bean>  
+
+	<beans:bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<beans:property name="dataSource" ref="dataSource"></beans:property>
+		<beans:property name="annotatedClasses">
+
+			<beans:list>
+	    <beans:value>com.suyoga.subjee.model.CentralCategory</beans:value>
+		<beans:value>com.suyoga.subjee.model.CentralFile</beans:value>
+		<beans:value>com.suyoga.subjee.model.CentralPrice</beans:value>
+		<beans:value>com.suyoga.subjee.model.CentralProduct</beans:value>
+		<beans:value>com.suyoga.subjee.model.CentralProductCategory</beans:value>
+		<beans:value>com.suyoga.subjee.model.CentralTrip</beans:value>
+		<beans:value>com.suyoga.subjee.model.CentralTripInvoice</beans:value>
+		<beans:value>com.suyoga.subjee.model.CentralTripPickupDrop</beans:value>
+		<beans:value>com.suyoga.subjee.model.CentralTripProductMap</beans:value>
+		<beans:value>com.suyoga.subjee.model.CentralTripRequest</beans:value>
+		<beans:value>com.suyoga.subjee.model.CentralTripTracking</beans:value>
+		<beans:value>com.suyoga.subjee.model.SabjiCart</beans:value>
+		<beans:value>com.suyoga.subjee.model.SabjiCartProduct</beans:value>
+		<beans:value>com.suyoga.subjee.model.SabjiCity</beans:value>
+		<beans:value>com.suyoga.subjee.model.SabjiDiscount</beans:value>
+		<beans:value>com.suyoga.subjee.model.SabjiLocation</beans:value>
+		<beans:value>com.suyoga.subjee.model.SabjiOrder</beans:value>
+		<beans:value>com.suyoga.subjee.model.SabjiOrderProduct</beans:value>
+		<beans:value>com.suyoga.subjee.model.SabjiPayment</beans:value>
+		<beans:value>com.suyoga.subjee.model.SabjiPaymentHistory</beans:value>
+		<beans:value>com.suyoga.subjee.model.SabjiServiceArea</beans:value>
+		<beans:value>com.suyoga.subjee.model.SabjiShipmentTracking</beans:value>
+		<beans:value>com.suyoga.subjee.model.SabjiShipping</beans:value>
+		<beans:value>com.suyoga.subjee.model.SabjiUserAddress</beans:value>
+		<beans:value>com.suyoga.subjee.model.SabjiUserUsergroupMap</beans:value>
+		<beans:value>com.suyoga.subjee.model.SabjiUsergroup</beans:value>
+		<beans:value>com.suyoga.subjee.model.SabjiUser</beans:value>
+		<beans:value>com.suyoga.subjee.model.SabjiUsersession</beans:value>
+		<beans:value>com.suyoga.subjee.model.SabjiInvoicedetail</beans:value>
+		<beans:value>com.suyoga.subjee.model.SabjiCustomerFeedback</beans:value>
+		<beans:value>com.suyoga.subjee.model.CentralSubcategory</beans:value>
+		<beans:value>com.suyoga.subjee.model.SabjiPromocode</beans:value>
+
+			</beans:list>
+
+		</beans:property>
+		<beans:property name="hibernateProperties">
+			<beans:props>
+				<beans:prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect
+				</beans:prop>
+				<beans:prop key="hibernate.current_session_context_class">thread</beans:prop>
+				<beans:prop key="hibernate.show_sql">true</beans:prop>
+				<beans:prop key="hibernate.format_sql">true</beans:prop>
+			</beans:props>
+		</beans:property>
+	</beans:bean>
+
+
+
+</beans:beans>
